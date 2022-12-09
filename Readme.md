@@ -2,10 +2,6 @@
   <img alt="dashgo" title="dashgo" width="300px"  src=".github/logo.svg" />
 </h1>
 
-<p align="center">
-  <a href="https://www.linkedin.com/in/eliasgcf/"><img alt="Made by" src="https://img.shields.io/badge/made%20by-Elias%20Gabriel-%23D53F8C"></a>
-  <img alt="GitHub" src="https://img.shields.io/github/license/EliasGcf/dashgo?color=%23D53F8C">
-</p>
 
 ## Informações sobre o projeto
 
@@ -56,8 +52,6 @@ $ yarn start
 
 <br>
 
-
-<br>
 
 
 Feito com :blue_heart: by [Vagner Santos](https://github.com/vagner531)
