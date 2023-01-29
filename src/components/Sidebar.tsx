@@ -19,7 +19,7 @@ export function Sidebar() {
             </Link>
             <Link display="flex" align="center">
               <Icon as={RiContactsLine} fontSize="20" />
-              <Text ml="4" fontWeight="medium">Automação</Text>
+              <Text ml="4" fontWeight="medium">Usuários</Text>
             </Link>
           </Stack>
         </Box>
@@ -37,7 +37,7 @@ export function Sidebar() {
             </Link>
             <Link display="flex" align="center">
               <Icon as={RiGitMergeLine} fontSize="20" />
-              <Text ml="4" fontWeight="medium">Usuários</Text>
+              <Text ml="4" fontWeight="medium">Automação</Text>
             </Link>
           </Stack>
         </Box>
