@@ -69,7 +69,7 @@ export function Header() {
             </Text>
           </Box>
           
-          <Avatar size="md" name="Vagner Nascimento" src="https://github.com/vagner531.png"/>
+          <Avatar size="md" p="1" borderWidth="1px" borderColor="#fff"  name="Vagner Nascimento" src="https://github.com/vagner531.png"/>
         </Flex>
       </Flex>
     </Flex>
