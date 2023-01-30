@@ -1,7 +1,9 @@
 import {
   Box,
+  Button,
   Divider,
   Flex,
+  HStack,
   Heading,
   SimpleGrid,
   VStack,
@@ -38,6 +40,12 @@ export default function CreateUser() {
               />
             </SimpleGrid>
           </VStack>
+          <Flex mt="8" justify="flex-end">
+            <HStack spacing="4">
+              <Button bg="gray.00">Cancelar</Button>
+              <Button bg="pink.600">Salvar</Button>
+            </HStack>
+          </Flex>
         </Box>
       </Flex>
     </Box>
