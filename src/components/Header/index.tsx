@@ -42,7 +42,7 @@ export function Header() {
         ></IconButton>
       )}
 
-      <Logo />
+      <Logo  />
 
       {isWideVersion && <SearchBox />}
 
