@@ -18,12 +18,13 @@ import { Header } from "../../components/Header";
 import { Sidebar } from "../../components/Sidebar";
 import { RiAddLine, RiPencilLine } from "react-icons/ri";
 import { Pagination } from "../../components/Pagination";
+import Link from "next/link";
 
 export default function UserList() {
   const isWideVersion = useBreakpointValue({
     base: false,
     lg: true,
-  })
+  });
 
   return (
     <Box>
@@ -36,15 +37,17 @@ export default function UserList() {
             <Heading size="lg" fontWeight="normal">
               Usuários
             </Heading>
-            <Button
-              as="a"
-              size="sm"
-              fontSize="sm"
-              bgColor="purple.800"
-              leftIcon={<Icon as={RiAddLine} fontSize="20" />}
-            >
-              Criar novo
-            </Button>
+            <Link href="/users/create" passHref>
+              <Button
+                as="a"
+                size="sm"
+                fontSize="sm"
+                bgColor="purple.800"
+                leftIcon={<Icon as={RiAddLine} fontSize="20" />}
+              >
+                Criar novo
+              </Button>
+            </Link>
           </Flex>
 
           <Table colorScheme="whiteAlpha">
@@ -54,7 +57,7 @@ export default function UserList() {
                   <Checkbox colorScheme="purple" />
                 </Th>
                 <Th>Usuário</Th>
-                { isWideVersion && <Th>Data de cadastro</Th>}
+                {isWideVersion && <Th>Data de cadastro</Th>}
                 <Th width="8"></Th>
               </Tr>
             </Thead>
@@ -71,7 +74,7 @@ export default function UserList() {
                     </Text>
                   </Box>
                 </Td>
-                { isWideVersion && <Td>14 de Outubro, 2023</Td> }
+                {isWideVersion && <Td>14 de Outubro, 2023</Td>}
                 <Td>
                   <Button
                     as="a"
@@ -80,7 +83,7 @@ export default function UserList() {
                     bgColor="pink.600"
                     leftIcon={<Icon as={RiPencilLine} fontSize="16" />}
                   >
-                    { isWideVersion ? 'Editar' : ''}
+                    {isWideVersion ? "Editar" : ""}
                   </Button>
                 </Td>
               </Tr>
