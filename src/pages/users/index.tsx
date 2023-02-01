@@ -83,7 +83,7 @@ export default function UserList() {
                     bgColor="pink.600"
                     leftIcon={<Icon as={RiPencilLine} fontSize="16" />}
                   >
-                    {isWideVersion ? "Editar" : ""}
+                    {isWideVersion ? "Editar" : ''}
                   </Button>
                 </Td>
               </Tr>
