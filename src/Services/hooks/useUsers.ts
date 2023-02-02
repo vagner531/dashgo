@@ -9,7 +9,7 @@ type User = {
 };
 
 export async function getUsers(): Promise<User[]> {
-  const { data } = await api.get("users");
+  const { data } = await api.get('/api/users');
 
   const users = data.users.map((user: User) => {
     return {
@@ -28,7 +28,7 @@ export async function getUsers(): Promise<User[]> {
 }
 
 export function useUsers() {
-  return useQuery<User[]>(["users"], {
+  return useQuery<User[]>(["users"], () => getUsers(), {
     staleTime: 1000 * 5, // seconds
   });
 }
