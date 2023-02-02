@@ -16,6 +16,7 @@ import Link from "next/link";
 import { useForm, SubmitHandler } from "react-hook-form";
 import * as yup from 'yup';
 import { yupResolver } from "@hookform/resolvers/yup";
+import { FieldValues } from "react-hook-form/dist/types/fields";
 
 type createUserFormData = {
   name: string;
@@ -26,7 +27,7 @@ type createUserFormData = {
 };
 
 const createUserFormShema = yup.object().shape({
-  anme: yup.string().required('Nome obrigatório'),
+  name: yup.string().required('Nome obrigatório'),
   email: yup.string().required('E-mail obrigatório').email('E-mail inválido'),
   password: yup.string().required('Senha obrigatório').min(6, 'No minimo 6 caracteres'),
   password_confirmation: yup.string().oneOf([
@@ -41,7 +42,7 @@ export default function CreateUser() {
 
   const { errors } = formState
 
-  const handleCreateUser: SubmitHandler<createUserFormData> = async (values) => {
+  const handleCreateUser: SubmitHandler<FieldValues> = async (values) => {
     await new Promise((resolve) => setTimeout(resolve, 2000));
     console.log(values);
   }
@@ -69,13 +70,11 @@ export default function CreateUser() {
           <VStack spacing="8">
             <SimpleGrid minChildWidth="240px" spacing={["6", "8"]} w="100%">
               <Input 
-              name="name" 
               label="Nome completo" 
               error={errors.name}
               {...register('name')}
               />
               <Input 
-              name="email" 
               type="email" 
               label="E-mail"
               error={errors.email} 
@@ -84,13 +83,11 @@ export default function CreateUser() {
             </SimpleGrid>
             <SimpleGrid minChildWidth="240px" spacing={["6", "8"]} w="100%">
               <Input 
-              name="password" 
               label="Senha" 
               error={errors.password}
               {...register('password')} 
               />
               <Input
-                name="password_confirmation"
                 type="password"
                 label="Confirmação de senha"
                 error={errors.password_confirmation}
