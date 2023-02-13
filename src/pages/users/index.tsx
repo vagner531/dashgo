@@ -18,9 +18,9 @@ import {
 import { Header } from "../../components/Header";
 import { Sidebar } from "../../components/Sidebar";
 import { RiAddLine } from "react-icons/ri";
-import { Pagination } from "../../components/Pagination";
 import Link from "next/link";
-import { useUsers } from "../../Services/hooks/useUsers";
+import { useUsers } from "../../services/hooks/useUsers";
+import { Pagination } from "../../components/Pagination";
 
 export default function UserList() {
   const { data, isLoading, isFetching, error } = useUsers();
@@ -44,16 +44,16 @@ export default function UserList() {
                 <Spinner size="sm" color="gray.500" ml="4" />
               )}
             </Heading>
-              <Button
-                as={Link}
-                size="sm"
-                fontSize="sm"
-                bgColor="pink.600"
-                leftIcon={<Icon as={RiAddLine} fontSize="20" />}
-                href="/users/create"
-              >
-                Criar novo
-              </Button>
+            <Button
+              as={Link}
+              size="sm"
+              fontSize="sm"
+              bgColor="pink.600"
+              leftIcon={<Icon as={RiAddLine} fontSize="20" />}
+              href="/users/create"
+            >
+              Criar novo
+            </Button>
           </Flex>
 
           {isLoading ? (
@@ -78,7 +78,7 @@ export default function UserList() {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {data?.map(user => {
+                  {data?.map((user) => {
                     return (
                       <Tr key={user.id}>
                         <Td px={["4", "4", "6"]}>
@@ -98,7 +98,13 @@ export default function UserList() {
                   })}
                 </Tbody>
               </Table>
-              <Pagination />
+              
+              <Pagination
+                totalCountOfRegisters={200}
+                currentPage={5}
+                onPageChange={() => {}}
+              />
+              
             </>
           )}
         </Box>
