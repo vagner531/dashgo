@@ -21,8 +21,10 @@ import { RiAddLine } from "react-icons/ri";
 import Link from "next/link";
 import { useUsers } from "../../services/hooks/useUsers";
 import { Pagination } from "../../components/Pagination";
+import { useState } from "react";
 
 export default function UserList() {
+  const [page, setPage] = useState(1);
   const { data, isLoading, isFetching, error } = useUsers();
 
   const isWideVersion = useBreakpointValue({
@@ -101,8 +103,9 @@ export default function UserList() {
               
               <Pagination
                 totalCountOfRegisters={200}
+                registersPerPage={10}
                 currentPage={5}
-                onPageChange={() => {}}
+                onPageChange={setPage}
               />
               
             </>
