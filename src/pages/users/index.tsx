@@ -1,3 +1,4 @@
+import NextLink from "next/link";
 import {
   Box,
   Text,
@@ -14,14 +15,16 @@ import {
   Tr,
   useBreakpointValue,
   Spinner,
+  Link,
 } from "@chakra-ui/react";
 import { Header } from "../../components/Header";
 import { Sidebar } from "../../components/Sidebar";
 import { RiAddLine } from "react-icons/ri";
-import Link from "next/link";
 import { useUsers } from "../../services/hooks/useUsers";
 import { Pagination } from "../../components/Pagination";
 import { useState } from "react";
+import { queryClient } from "../../services/queryClient";
+import { api } from "../../services/api";
 
 export default function UserList() {
   const [page, setPage] = useState(1);
@@ -31,6 +34,17 @@ export default function UserList() {
     base: false,
     lg: true,
   });
+
+  async function handlePrefetchUser(userId: string) {
+    await queryClient.prefetchQuery(['user', {userId}], 
+    async () => {
+      const response = await api.get(`users/${userId}`)
+
+      return response.data;
+    }, {
+      staleTime: 1000 * 60 * 10,
+    })
+  }
 
   return (
     <Box>
@@ -46,8 +60,9 @@ export default function UserList() {
                 <Spinner size="sm" color="gray.500" ml="4" />
               )}
             </Heading>
+            <NextLink href="/users/create" passHref>
             <Button
-              as={Link}
+              as="a"
               size="sm"
               fontSize="sm"
               bgColor="pink.600"
@@ -56,6 +71,7 @@ export default function UserList() {
             >
               Criar novo
             </Button>
+            </NextLink>
           </Flex>
 
           {isLoading ? (
@@ -88,10 +104,13 @@ export default function UserList() {
                         </Td>
                         <Td>
                           <Box>
+                            <Link 
+                            color="purple.400" 
+                            onMouseEnter={() => handlePrefetchUser(user.id)}
+                            >
                             <Text fontWeight="bold">{user.name}</Text>
-                            <Text fontSize="sm" color="gray.300">
-                              {user.email}
-                            </Text>
+                            </Link>
+                            <Text fontSize="sm" color="gray.300">{user.email}</Text>
                           </Box>
                         </Td>
                         {isWideVersion && <Td>{user.createdAt}</Td>}
@@ -115,3 +134,5 @@ export default function UserList() {
     </Box>
   );
 }
+
+
