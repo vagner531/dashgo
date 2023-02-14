@@ -5,14 +5,12 @@ import { theme } from "../styles/theme";
 
 import { QueryClientProvider, QueryClient } from 'react-query';
 import { SidebarDrawerProvider } from "../contexts/SidebarDrawerContext";
-import { queryClient } from "../services/queryClient";
 import { makeServer } from "../services/mirage";
+import { queryClient } from "../services/queryClient";
 
 if (process.env.NODE_ENV === 'development') {
   makeServer();
 }
-
-
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
